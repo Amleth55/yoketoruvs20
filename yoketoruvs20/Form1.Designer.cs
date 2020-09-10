@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.titleLabel = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
             this.copyRightLabel = new System.Windows.Forms.Label();
@@ -35,8 +36,9 @@
             this.starLabel = new System.Windows.Forms.Label();
             this.hiLabel = new System.Windows.Forms.Label();
             this.gameoverLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.titleButton = new System.Windows.Forms.Button();
+            this.clearLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // titleLabel
@@ -111,33 +113,38 @@
             this.gameoverLabel.TabIndex = 6;
             this.gameoverLabel.Text = "GameOver";
             // 
-            // button1
+            // titleButton
             // 
-            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(302, 301);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 71);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "タイトルへ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.titleButton.Location = new System.Drawing.Point(302, 301);
+            this.titleButton.Name = "titleButton";
+            this.titleButton.Size = new System.Drawing.Size(154, 71);
+            this.titleButton.TabIndex = 7;
+            this.titleButton.Text = "タイトルへ";
+            this.titleButton.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // clearLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 55F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(289, 196);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 74);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Clear";
+            this.clearLabel.AutoSize = true;
+            this.clearLabel.Font = new System.Drawing.Font("MS UI Gothic", 55F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.clearLabel.Location = new System.Drawing.Point(289, 196);
+            this.clearLabel.Name = "clearLabel";
+            this.clearLabel.Size = new System.Drawing.Size(195, 74);
+            this.clearLabel.TabIndex = 8;
+            this.clearLabel.Text = "Clear";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.clearLabel);
+            this.Controls.Add(this.titleButton);
             this.Controls.Add(this.gameoverLabel);
             this.Controls.Add(this.hiLabel);
             this.Controls.Add(this.starLabel);
@@ -161,8 +168,9 @@
         private System.Windows.Forms.Label starLabel;
         private System.Windows.Forms.Label hiLabel;
         private System.Windows.Forms.Label gameoverLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button titleButton;
+        private System.Windows.Forms.Label clearLabel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
