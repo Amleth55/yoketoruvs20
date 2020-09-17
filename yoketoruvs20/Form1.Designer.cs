@@ -62,6 +62,7 @@
             this.startButton.TabIndex = 1;
             this.startButton.Text = "スタート";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // copyRightLabel
             // 
@@ -97,7 +98,7 @@
             // 
             this.hiLabel.AutoSize = true;
             this.hiLabel.Font = new System.Drawing.Font("MS UI Gothic", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.hiLabel.Location = new System.Drawing.Point(234, 223);
+            this.hiLabel.Location = new System.Drawing.Point(239, 3);
             this.hiLabel.Name = "hiLabel";
             this.hiLabel.Size = new System.Drawing.Size(308, 47);
             this.hiLabel.TabIndex = 5;
@@ -116,18 +117,19 @@
             // titleButton
             // 
             this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.titleButton.Location = new System.Drawing.Point(302, 301);
+            this.titleButton.Location = new System.Drawing.Point(314, 301);
             this.titleButton.Name = "titleButton";
-            this.titleButton.Size = new System.Drawing.Size(154, 71);
+            this.titleButton.Size = new System.Drawing.Size(142, 71);
             this.titleButton.TabIndex = 7;
             this.titleButton.Text = "タイトルへ";
             this.titleButton.UseVisualStyleBackColor = true;
+            this.titleButton.Click += new System.EventHandler(this.titleButton_Click);
             // 
             // clearLabel
             // 
             this.clearLabel.AutoSize = true;
             this.clearLabel.Font = new System.Drawing.Font("MS UI Gothic", 55F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.clearLabel.Location = new System.Drawing.Point(289, 196);
+            this.clearLabel.Location = new System.Drawing.Point(291, 175);
             this.clearLabel.Name = "clearLabel";
             this.clearLabel.Size = new System.Drawing.Size(195, 74);
             this.clearLabel.TabIndex = 8;
