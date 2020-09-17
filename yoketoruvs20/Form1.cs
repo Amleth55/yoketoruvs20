@@ -87,8 +87,21 @@ namespace yoketoruvs20
                 }
             }
 
+            if(currentState == State.Game)
+            {
+                UpdateGame();
+            }
         }
 
+        void UpdateGame()
+        {
+            Point mp = PointToClient(MousePosition);
+
+            //　TODO: mpがプレイヤーの中心になるように設定
+
+
+
+        }
         void initProc()
         {
             currentState = nextState;
