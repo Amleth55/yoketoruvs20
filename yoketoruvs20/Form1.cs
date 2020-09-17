@@ -18,8 +18,8 @@ namespace yoketoruvs20
         const int PlayerMax = 1;
         const int EnemyMax = 10;
         const int ItemMax = 10;
-        const int ChrMAx = PlayerMax + EnemyMax + ItemMax;
-        Label[] chrs = new Label[ChrMAx];
+        const int ChrMax = PlayerMax + EnemyMax + ItemMax;
+        Label[] chrs = new Label[ChrMax];
         const int PlayerIndex = 0;
         const int EnemyIndex = PlayerIndex + PlayerMax;
         const int ItemIndex = EnemyIndex + EnemyMax;
@@ -48,7 +48,7 @@ namespace yoketoruvs20
         {
             InitializeComponent();
 
-            for(int i=0; i< ChrMAx; i++)
+            for(int i=0; i< ChrMax; i++)
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
@@ -124,6 +124,13 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyRightLabel.Visible = false;
                     hiLabel.Visible = false;
+
+                    for(int i=EnemyIndex; i < ChrMax; i++)
+                    {
+                        chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                        chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+
+                    }
                     break;
 
                 case State.Gameover:
