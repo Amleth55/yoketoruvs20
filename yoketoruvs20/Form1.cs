@@ -41,6 +41,10 @@ namespace yoketoruvs20
         State currentState = State.None;
         State nextState = State.Title;
 
+        const int SpeedMax = 20;
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
 
@@ -129,7 +133,6 @@ namespace yoketoruvs20
                     {
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
-
                     }
                     break;
 
