@@ -131,13 +131,22 @@ namespace yoketoruvs20
                     vy[i] = -Math.Abs(vy[i]);
                 }
                 //当たり判定
-                if(  (mp.X >=chrs[i].Left) && (mp.X< chrs[i].Right) && (mp.Y>= chrs[i].Top) && (mp.Y<chrs[i].Bottom))
+                //if(  (mp.X >=chrs[i].Left) && (mp.X< chrs[i].Right) && (mp.Y>= chrs[i].Top) && (mp.Y<chrs[i].Bottom))
                    {
-                    MessageBox.Show("当たった!");
-                   }
+                    //MessageBox.Show("当たった!");
+                    //nextState = State.Gameover;
+                }
+                if(chrs[i].Text == EnemyText)
+                //if(  (mp.X >=chrs[ItemIndex].Left) && (mp.X< chrs[ItemIndex].Right) && (mp.Y>= chrs[ItemIndex].Top) && (mp.Y<chrs[ItemIndex].Bottom))
+                {
+                    nextState = State.Gameover;
+                }
+                else
+                {
+                    //アイテム
+                    //chrs[i].Visible = false;
+                }
             }
-
-
         }
         void initProc()
         {
@@ -154,7 +163,6 @@ namespace yoketoruvs20
                     gameoverLabel.Visible = false;
                     titleButton.Visible = false;
                     clearLabel.Visible = false;
-                   
                     break;
 
                 case State.Game:
@@ -170,7 +178,6 @@ namespace yoketoruvs20
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                         //vx[i].rand.Next(-SpeedMax);
                         //vy[i].rand.Next(-SpeedMax);
-
                     }
                     break;
 
