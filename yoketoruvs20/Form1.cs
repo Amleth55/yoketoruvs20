@@ -102,7 +102,31 @@ namespace yoketoruvs20
             Point mp = PointToClient(MousePosition);
 
             //　TODO: mpがプレイヤーの中心になるように設定
+            chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width;
+            chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height;
 
+          for(int i=EnemyIndex; i<ChrMax;i++)
+            {
+                chrs[i].Left += vx[i];
+                chrs[i].Top += vy[i];
+
+                if(chrs[i].Left < 0)
+                {
+                    vx[i] = Math.Abs(vx[i]);
+                }
+                if (chrs[i].Top < 0)
+                {
+                    vy[i] = Math.Abs(vx[i]);
+                }
+                if (chrs[i].Left > 0)
+                {
+                    vx[i] = Math.Abs(vx[i]);
+                }
+                if (chrs[i].Top > 0)
+                {
+                    vy[i] = Math.Abs(vx[i]);
+                }
+            }
 
 
         }
@@ -121,6 +145,7 @@ namespace yoketoruvs20
                     gameoverLabel.Visible = false;
                     titleButton.Visible = false;
                     clearLabel.Visible = false;
+                   
                     break;
 
                 case State.Game:
@@ -128,11 +153,15 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyRightLabel.Visible = false;
                     hiLabel.Visible = false;
+                    
 
                     for(int i=EnemyIndex; i < ChrMax; i++)
                     {
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                        //vx[i].rand.Next(-SpeedMax);
+                        //vy[i].rand.Next(-SpeedMax);
+
                     }
                     break;
 
