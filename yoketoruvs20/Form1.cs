@@ -131,7 +131,7 @@ namespace yoketoruvs20
                     vy[i] = -Math.Abs(vy[i]);
                 }
                 //当たり判定
-                //if(  (mp.X >=chrs[i].Left) && (mp.X< chrs[i].Right) && (mp.Y>= chrs[i].Top) && (mp.Y<chrs[i].Bottom))
+                if(  (mp.X >=chrs[i].Left) && (mp.X< chrs[i].Right) && (mp.Y>= chrs[i].Top) && (mp.Y<chrs[i].Bottom))
                    {
                     //MessageBox.Show("当たった!");
                     //nextState = State.Gameover;
@@ -139,12 +139,12 @@ namespace yoketoruvs20
                 if(chrs[i].Text == EnemyText)
                 //if(  (mp.X >=chrs[ItemIndex].Left) && (mp.X< chrs[ItemIndex].Right) && (mp.Y>= chrs[ItemIndex].Top) && (mp.Y<chrs[ItemIndex].Bottom))
                 {
-                    nextState = State.Gameover;
+                    //nextState = State.Gameover;
                 }
                 else
                 {
                     //アイテム
-                    //chrs[i].Visible = false;
+                    chrs[ItemIndex].Visible = false;
                 }
             }
         }
