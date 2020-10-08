@@ -84,6 +84,7 @@
             this.TimeLabel.Size = new System.Drawing.Size(137, 34);
             this.TimeLabel.TabIndex = 3;
             this.TimeLabel.Text = "Time 100";
+            this.TimeLabel.Click += new System.EventHandler(this.TimeLabel_Click);
             // 
             // starLabel
             // 

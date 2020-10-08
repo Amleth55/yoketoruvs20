@@ -13,6 +13,8 @@ namespace yoketoruvs20
 {
     public partial class Form1 : Form
     {
+        int a = 10;
+        int b = 100;
         const bool isDebug = true;
 
         const int PlayerMax = 1;
@@ -29,6 +31,7 @@ namespace yoketoruvs20
         const string ItemText = "★";
 
         static Random rand = new Random();
+
 
         enum State
         {
@@ -52,15 +55,15 @@ namespace yoketoruvs20
         {
             InitializeComponent();
 
-            for(int i=0; i< ChrMax; i++)
+            for (int i = 0; i < ChrMax; i++)
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
-                if(i == PlayerIndex)
+                if (i == PlayerIndex)
                 {
                     chrs[i].Text = PlayerText;
                 }
-                else if(i < ItemIndex)
+                else if (i < ItemIndex)
                 {
                     chrs[i].Text = EnemyText;
                 }
@@ -80,19 +83,19 @@ namespace yoketoruvs20
                 initProc();
             }
 
-            if(isDebug)
+            if (isDebug)
             {
-                if(GetAsyncKeyState((int)Keys.O) < 0)
+                if (GetAsyncKeyState((int)Keys.O) < 0)
                 {
                     nextState = State.Gameover;
                 }
-                else if(GetAsyncKeyState((int)Keys.C) < 0)
+                else if (GetAsyncKeyState((int)Keys.C) < 0)
                 {
                     nextState = State.Clear;
                 }
             }
 
-            if(currentState == State.Game)
+            if (currentState == State.Game)
             {
                 UpdateGame();
             }
@@ -102,20 +105,25 @@ namespace yoketoruvs20
         {
             Point mp = PointToClient(MousePosition);
 
-            //　TODO: mpがプレイヤーの中心になるように設定
-            chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width;
-            chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height;
+            TimeLabel.Text = "Time" + b.ToString();
 
-          for(int i=EnemyIndex; i<ChrMax;i++)
+
+
+
+            //　TODO: mpがプレイヤーの中心になるように設定
+            chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2;
+            chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
+
+            for (int i = EnemyIndex; i < ChrMax; i++)
             {
                 chrs[i].Left += vx[i];
                 chrs[i].Top += vy[i];
 
-                if(chrs[i].Left < 0)
+                if (chrs[i].Left < 0)
                 {
                     vx[i] = Math.Abs(vx[i]);
                 }
-                
+
                 if (chrs[i].Top < 0)
                 {
                     vy[i] = Math.Abs(vy[i]);
@@ -130,21 +138,38 @@ namespace yoketoruvs20
                 {
                     vy[i] = -Math.Abs(vy[i]);
                 }
+
+
+
+                starLabel.Text = "★:" + a.ToString();
+
                 //当たり判定
-                if(  (mp.X >=chrs[i].Left) && (mp.X< chrs[i].Right) && (mp.Y>= chrs[i].Top) && (mp.Y<chrs[i].Bottom))
-                   {
+                if ((mp.X >= chrs[i].Left)
+                && (mp.X < chrs[i].Right)
+                && (mp.Y >= chrs[i].Top)
+                && (mp.Y < chrs[i].Bottom))
+
+                {
                     //MessageBox.Show("当たった!");
-                    //nextState = State.Gameover;
-                }
-                if(chrs[i].Text == EnemyText)
-                //if(  (mp.X >=chrs[ItemIndex].Left) && (mp.X< chrs[ItemIndex].Right) && (mp.Y>= chrs[ItemIndex].Top) && (mp.Y<chrs[ItemIndex].Bottom))
-                {
-                    //nextState = State.Gameover;
-                }
-                else
-                {
-                    //アイテム
-                    chrs[ItemIndex].Visible = false;
+
+                    if (i < ItemIndex)
+                    //if(chrs[i].Text == EnemyText)
+                    {
+                        nextState = State.Gameover;
+                    }
+                    else
+                    {
+                        //アイテム
+                        chrs[i].Visible = false;
+                        if (a > 0)
+                        {
+                            a = a - 1;
+                        }
+                        else
+                        {
+                            nextState = State.Clear;
+                        }
+                    }
                 }
             }
         }
@@ -170,14 +195,14 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyRightLabel.Visible = false;
                     hiLabel.Visible = false;
-                    
 
-                    for(int i=EnemyIndex; i < ChrMax; i++)
+
+                    for (int i = EnemyIndex; i < ChrMax; i++)
                     {
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
-                        //vx[i].rand.Next(-SpeedMax);
-                        //vy[i].rand.Next(-SpeedMax);
+                        vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                     }
                     break;
 
@@ -205,6 +230,11 @@ namespace yoketoruvs20
         private void startButton_Click(object sender, EventArgs e)
         {
             nextState = State.Game;
+        }
+
+        private void TimeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
