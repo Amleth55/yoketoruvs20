@@ -161,6 +161,7 @@ namespace yoketoruvs20
                     {
                         //アイテム
                         chrs[i].Visible = false;
+                        //starLabel.Text = "★";
                         if (a > 0)
                         {
                             a = a - 1;
@@ -195,6 +196,7 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyRightLabel.Visible = false;
                     hiLabel.Visible = false;
+                    
 
 
                     for (int i = EnemyIndex; i < ChrMax; i++)
@@ -204,6 +206,8 @@ namespace yoketoruvs20
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                     }
+
+                    //itemCount;
                     break;
 
                 case State.Gameover:
